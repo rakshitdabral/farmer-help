@@ -11,6 +11,7 @@ export default function Index() {
 
   useEffect(()=>{
     CheckNavLoaded()
+    
   },[])
 
 const CheckNavLoaded = ()=>{
@@ -28,8 +29,8 @@ const CheckNavLoaded = ()=>{
       
      {
       user? 
-      <Redirect href={'/(tabs)/home'}/> :
-      <Redirect href={'/login/index'}/>
+      <Redirect href={'/(tabs)/home'}/> : <Redirect href={'/login/index'}/>
+      
      }
     </View>
   );

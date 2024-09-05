@@ -1,7 +1,7 @@
-import * as WebBrowser from 'expo-web-browser';
 import { useOAuth } from '@clerk/clerk-expo';
 import * as Linking from 'expo-linking';
-import React,{useCallback} from 'react';
+import * as WebBrowser from 'expo-web-browser';
+import React, { useCallback } from 'react';
 import { Image, Pressable, Text, View } from "react-native";
 import Colors from "../../constants/Colors";
 
@@ -23,12 +23,16 @@ export default function LoginScreen() {
   useWarmUpBrowser()
   const { startOAuthFlow } = useOAuth({ strategy: 'oauth_google' })
   
-  const onPress = React.useCallback(async () => {
+  const onPress = useCallback(async () => {
     try {
       const { createdSessionId, signIn, signUp, setActive } = await startOAuthFlow({
         redirectUrl: Linking.createURL('/(tabs)/home', { scheme: 'myapp' }),
       })
-      
+      if(createdSessionId){
+
+      }else{
+        
+      }
 
     } catch (err) {
       console.error('OAuth error', err)

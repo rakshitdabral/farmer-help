@@ -2,7 +2,7 @@ import { ClerkProvider } from "@clerk/clerk-expo";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SecureStore from 'expo-secure-store';
-import React  from "react";
+import React from "react";
 
 const tokenCache = {
   async getToken(key) {
