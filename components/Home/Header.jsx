@@ -12,7 +12,7 @@ export default function Header() {
       alignItems : 'center'
     }}>
       <View>
-        <Text>{console.log(user)}</Text>
+       
           <Text style={{
             fontFamily : 'outfit',
             fontSize :18
