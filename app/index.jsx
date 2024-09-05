@@ -1,12 +1,25 @@
 import { useUser } from "@clerk/clerk-expo";
-import { Redirect } from "expo-router";
+import { Redirect, useRootNavigationState } from "expo-router";
+import { useEffect } from "react";
 import { View } from "react-native";
 
 export default function Index() {
 
   const {user} = useUser()
 
-  return (
+  const rootNavigationState = useRootNavigationState()
+
+  useEffect(()=>{
+    CheckNavLoaded()
+  },[])
+
+const CheckNavLoaded = ()=>{
+  if(!rootNavigationState.key){
+    return null;
+  }
+}
+
+  return user && (
     <View
       style={{
         flex: 1,
@@ -14,9 +27,9 @@ export default function Index() {
     >
       
      {
-      user ? 
+      user? 
       <Redirect href={'/(tabs)/home'}/> :
-      <Redirect  href={'/login'}/>
+      <Redirect href={'/login/index'}/>
      }
     </View>
   );
