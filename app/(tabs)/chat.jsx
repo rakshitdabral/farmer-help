@@ -8,7 +8,7 @@ import { useUser } from "@clerk/clerk-expo";
 export default function Chat() {
   const {user} = useUser()
   const [messages , setMessages] = useState([])
-
+  const [loading ,setLoading] = useState(false)
   const handelSend = async(newMessages = [])=>{
     try{
         const userMessage = newMessages[0]
@@ -45,6 +45,7 @@ export default function Chat() {
           setMessages(previousMessages=>GiftedChat.append(previousMessages,botMessage))
           return
         }
+        setLoading(true)
         const response = await axios({
           url: `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyBp41CUDq8ptTjLhajTJ1-Vaa8ilbbM2dg`,
           method: "post",
@@ -67,6 +68,7 @@ export default function Chat() {
         }
 
         setMessages(previousMessages => GiftedChat.append(previousMessages,botMessage))
+        setLoading(false)
     }catch(err){
       console.log("error sending response" ,err)
     }
@@ -123,6 +125,7 @@ export default function Chat() {
       style={{ flex: 1, width: '100%', height: '100%' }}
       scrollToBottom
       inverted={true}
+      isTyping={loading}
     />
   );
 }

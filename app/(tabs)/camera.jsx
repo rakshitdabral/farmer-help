@@ -145,6 +145,7 @@ export default function Cam() {
         animateShutter = {cameraProps.animateShutter}
         enableTorch = {cameraProps.enableTorch}
         ref={cameraRef}
+       
       />
       <View style={styles.bottomContainer}>
         <TouchableOpacity onPress={()=>previousImage && setImage(previousImage)}>
