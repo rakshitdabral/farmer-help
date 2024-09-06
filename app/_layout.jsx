@@ -83,6 +83,9 @@ function RootLayoutNav(){
       }}/>
       <Stack.Screen name="login/index" options={{ headerShown: false }} />
       <Stack.Screen name="disease" options={{ headerShown: false }} />
+      <Stack.Screen name="irrigation" options={{ headerShown: false }} />
+      <Stack.Screen name="news" options={{ headerShown: false }} />
+      <Stack.Screen name="weather" options={{ headerShown: false }} />
     </Stack>
   )
 }

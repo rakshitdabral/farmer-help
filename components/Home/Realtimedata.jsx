@@ -1,6 +1,6 @@
+import { onValue, ref } from 'firebase/database';
 import React, { useEffect, useState } from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
-import { ref, onValue } from 'firebase/database';
 import { realTimeDatabase } from '../../config/FirebaseConfig';
 import Colors from "../../constants/Colors";
 
@@ -15,7 +15,7 @@ export default function Realtimedata() {
     const dataRef = ref(realTimeDatabase, '/data'); 
     const unsubscribe = onValue(dataRef, (snapshot) => {
       const fetchedData = snapshot.val();
-      console.log('Data from Firebase:', fetchedData);
+      // console.log('Data from Firebase:', fetchedData);
 
       if (fetchedData) {
         const records = Object.values(fetchedData);
