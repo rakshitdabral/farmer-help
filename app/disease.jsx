@@ -4,11 +4,13 @@ import React from "react";
 import { Dimensions, Image, Text, TouchableOpacity, View } from "react-native";
 import Colors from "../constants/Colors";
 
+
+
 export default function Disease() {
   const route = useRoute();
   const image = route.params.image;
   const navigation = useNavigation();
-
+  
   return (
     <View
       style={{
@@ -59,7 +61,9 @@ export default function Disease() {
           width : Dimensions.get('window').width*0.5,
           borderRadius: 9,
           marginTop: 14,
-        }}>
+        }}
+        
+        >
           <Text style={{
             color: Colors.WHITE,
             fontSize: 18,
@@ -67,7 +71,7 @@ export default function Disease() {
           }}>Predict</Text>
         </TouchableOpacity>
       </View>
-
+     
     </View>
   );
 }

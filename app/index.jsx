@@ -20,7 +20,7 @@ const CheckNavLoaded = ()=>{
   }
 }
 
-  return user && (
+  return (
     <View
       style={{
         flex: 1,

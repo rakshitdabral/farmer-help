@@ -1,4 +1,4 @@
-import { useAuth, useUser } from '@clerk/clerk-expo';
+import { useAuth, useUser , revokeToken} from '@clerk/clerk-expo';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useRouter } from 'expo-router';
 import React from 'react';
@@ -13,6 +13,7 @@ export default function Profile() {
 
   const onPressMenu = (menu)=>{
     if(menu.name=='Logout'){
+     
       signOut()
       router.push(menu.path)
       return

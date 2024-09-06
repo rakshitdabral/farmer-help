@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text, View, Image, StyleSheet } from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
 import Colors from "../../constants/Colors";
 export default function Realtimedata() {
   const [temperature, setTemperature] = useState(30);
