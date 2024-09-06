@@ -1,9 +1,23 @@
-import { useUser } from '@clerk/clerk-expo'
-import React from 'react'
+import { useUser , useAuth} from '@clerk/clerk-expo'
+import React, { useEffect , useState} from 'react'
 import { Image, Text, View } from 'react-native'
 
 export default function Header() {
-  const {user} = useUser()
+  const { signOut, isSignedIn } = useAuth();
+  const { user } = useUser();
+  const [fullName, setFullName] = useState(user?.fullName);
+  const [image, setImage] = useState(user?.imageUrl);
+  
+
+  useEffect(()=>{
+    if (!user) {
+      return;
+    }
+
+    setFullName(user.fullName);
+    setImage(user.imageUrl);
+  },[user])
+
   return (
     <View style={{
       display : 'flex',
@@ -20,9 +34,9 @@ export default function Header() {
           <Text style={{
             fontFamily : 'outfit-med',
             fontSize : 25
-          }}>{user?.fullName}</Text>
+          }}>{fullName}</Text>
       </View>
-      <Image source={{uri:user?.imageUrl}} style={{
+      <Image source={{uri:image}} style={{
         width:40,
         height: 40,
         borderRadius : 99,

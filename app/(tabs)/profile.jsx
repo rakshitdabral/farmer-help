@@ -1,7 +1,7 @@
-import { useAuth, useUser , revokeToken} from '@clerk/clerk-expo';
+import { useAuth, useUser } from '@clerk/clerk-expo';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useRouter } from 'expo-router';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FlatList, Image, Text, TouchableOpacity, View } from 'react-native';
 import Colors from "./../../constants/Colors";
 
@@ -10,6 +10,16 @@ export default function Profile() {
   const {user} = useUser()
   const router = useRouter()
   const {signOut} = useAuth()
+  const [image, setImage] = useState(user?.imageUrl);
+  const [email, setEmail] = useState(user?.emailAddresses[0].emailAddress);
+
+  useEffect(()=>{
+    if (!user) {
+      return;
+    }
+    setImage(user.imageUrl);
+    setEmail(user.emailAddresses[0].emailAddress);
+  },[user])
 
   const onPressMenu = (menu)=>{
     if(menu.name=='Logout'){
@@ -18,6 +28,7 @@ export default function Profile() {
       router.push(menu.path)
       return
     }
+  
    
   }
 
@@ -49,7 +60,7 @@ export default function Profile() {
         alignItems : 'center',
         marginVertical: 25
       }}>
-          <Image source={{uri:user?.imageUrl}}
+          <Image source={{uri:image}}
           style={{
             width : 80,
             height : 80,
@@ -68,7 +79,7 @@ export default function Profile() {
             color : Colors.GRAY,
             marginTop : 2
           }}>
-            {user?.primaryEmailAddress?.emailAddress}
+            {email}
           </Text>
       </View>
       <FlatList data={Menu}  

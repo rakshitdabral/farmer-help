@@ -6,6 +6,7 @@ import Realtimedata from '../../components/Home/Realtimedata'
 import Slider from '../../components/Home/Slider'
 
 export default function Home() {
+  
   return (
     <ScrollView showsVerticalScrollIndicator={false} >
     <View style={{

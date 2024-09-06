@@ -4,34 +4,32 @@ import { useEffect } from "react";
 import { View } from "react-native";
 
 export default function Index() {
+  const { user, isSignedIn, isLoaded } = useUser();
+  
+  const rootNavigationState = useRootNavigationState();
 
-  const {user} = useUser()
+  useEffect(() => {
+    CheckNavLoaded();
+  }, []);
 
-  const rootNavigationState = useRootNavigationState()
+  const CheckNavLoaded = () => {
+    if (!rootNavigationState.key) {
+      return null;
+    }
+  };
 
-  useEffect(()=>{
-    CheckNavLoaded()
-    
-  },[])
-
-const CheckNavLoaded = ()=>{
-  if(!rootNavigationState.key){
-    return null;
+  if (!isLoaded) {
+    // You can add a loading indicator here
+    return <View />;
   }
-}
 
   return (
-    <View
-      style={{
-        flex: 1,
-      }}
-    >
-      
-     {
-      user? 
-      <Redirect href={'/(tabs)/home'}/> : <Redirect href={'/login/index'}/>
-      
-     }
+    <View style={{ flex: 1 }}>
+      {isSignedIn ? (
+        <Redirect href={"/(tabs)/home"} />
+      ) : (
+        <Redirect href={"/login/index"} />
+      )}
     </View>
   );
 }

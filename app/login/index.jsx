@@ -29,7 +29,7 @@ export default function LoginScreen() {
         redirectUrl: Linking.createURL('/(tabs)/home', { scheme: 'myapp' }),
       })
       if(createdSessionId){
-
+          
       }else{
         
       }
