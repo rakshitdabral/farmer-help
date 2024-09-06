@@ -1,9 +1,8 @@
-import { useRoute } from "@react-navigation/native";
-import React from "react";
-import { Image, Text, TouchableOpacity, View , Dimensions } from "react-native";
-import Colors from "../constants/Colors";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from "@react-navigation/native";
+import React from "react";
+import { Dimensions, Image, Text, TouchableOpacity, View } from "react-native";
+import Colors from "../constants/Colors";
 
 export default function Disease() {
   const route = useRoute();

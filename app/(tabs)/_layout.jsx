@@ -4,11 +4,18 @@ import React from 'react';
 import Colors from '../../constants/Colors';
 
 
+
+
+
 export default function TabLayout() {
+ 
+
+
   return (
     <Tabs 
       screenOptions={{
-        tabBarActiveTintColor : Colors.PRIMARY
+        tabBarActiveTintColor : Colors.PRIMARY,
+        tabBarHideOnKeyboard: true,
       }}
     >
         <Tabs.Screen name='home'
@@ -22,6 +29,7 @@ export default function TabLayout() {
             title : 'Chat',
             headerShown : false,
             tabBarIcon: ({color})=><Ionicons name="chatbox-ellipses-sharp" size={24} color={color} />
+            
           }}
         />
         <Tabs.Screen name='camera'
