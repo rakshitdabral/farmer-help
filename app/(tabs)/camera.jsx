@@ -1,12 +1,13 @@
 import { CameraView, useCameraPermissions } from 'expo-camera'
 import * as MediaLibrary from "expo-media-library"
-import React, { useEffect, useRef, useState } from 'react'
+import { useNavigation } from 'expo-router'
+import React, { useRef, useState } from 'react'
 import { Alert, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import Colors from '../../constants/Colors'
 import Button from "./../../components/Camera/Button"
 
 export default function Cam() {
-
+  const navigation = useNavigation();
   const [cameraPermission, requestCameraPermission] = useCameraPermissions()
   const [mediaLibraryPermission, requestMediaLibraryPermission] = MediaLibrary.usePermissions() 
 
@@ -73,9 +74,15 @@ export default function Cam() {
       try{
         const asset = await MediaLibrary.createAssetAsync(image)
         const assetInfo = await MediaLibrary.getAssetInfoAsync(asset.id)
+        console.log(asset)
         Alert.alert('Photo Saved!' , image)
+        
         setImage(null)
+        console.log('Image before navigation:', image); // Add this line
+        navigation.push('disease', { image: image });
         // getLastSavedImage()
+        // console.log(image)
+        
       }catch(err){
         console.log("Error saving image" ,err)
       }
@@ -111,8 +118,9 @@ export default function Cam() {
 //   }
 // },[cameraPermission, mediaLibraryPermissionResponse ])
 
-
+  
   return (
+    
     <View style={styles.container}>
       {
         !image?(
