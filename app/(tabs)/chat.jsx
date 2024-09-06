@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useCallback } from "react";
-import { Text, View, Button, StyleSheet } from "react-native";
-import { Bubble, GiftedChat, Send } from "react-native-gifted-chat";
-import Colors from "./../../constants/Colors";
-import axios from "axios";
 import { useUser } from "@clerk/clerk-expo";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { StyleSheet } from "react-native";
+import { Bubble, GiftedChat } from "react-native-gifted-chat";
+import Colors from "./../../constants/Colors";
 
 export default function Chat() {
   const {user} = useUser()
