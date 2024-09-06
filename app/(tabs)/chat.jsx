@@ -98,6 +98,9 @@ export default function Chat() {
           right: {
             backgroundColor: Colors.PRIMARY,
           },
+          left:{
+            backgroundColor: Colors.WHITE
+          }
         }}
         textStyle={{
           right: {
