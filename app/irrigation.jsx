@@ -16,6 +16,7 @@ export default function irrigation() {
   const [humidity, setHumidity] = useState(null);
   const apiUrl = 'https://smart-irrigation-system-ozgf.onrender.com/predict';
   const [prediction, setPrediction] = useState('');
+  
 
   Notifications.setNotificationHandler({
     handleNotification: async () => ({
@@ -40,7 +41,7 @@ export default function irrigation() {
         SoilHumidity: cleanValue(humidity),
       });
       setPrediction(response.data)
-      
+      console.log(prediction)
       if(response.data.prediction ==='water the plant'){
           // console.log(response.data.prediction)
           Notifications.scheduleNotificationAsync({
