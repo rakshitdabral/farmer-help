@@ -181,7 +181,7 @@ const styles = StyleSheet.create({
     backgroundColor : '#fff',
     
   },topControlsContainer : {
-    height : 60,
+    height : 90,
     backgroundColor : 'black',
     flexDirection : 'row',
     justifyContent: 'space-around',
