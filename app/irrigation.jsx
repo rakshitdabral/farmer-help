@@ -14,7 +14,7 @@ export default function irrigation() {
   const [temperature, setTemperature] = useState(null);
   const [soilMoisture, setSoilMoisture] = useState(null);
   const [humidity, setHumidity] = useState(null);
-  const apiUrl = 'https://smart-irrigation-system-ozgf.onrender.com/predict';
+  const apiUrl = 'https://national-nadiya-vincetq-d573248a.koyeb.app/predict';
   const [prediction, setPrediction] = useState('');
   
 
