@@ -6,17 +6,17 @@ import { View } from "react-native";
 export default function Index() {
   const { user, isSignedIn, isLoaded } = useUser();
   
-  const rootNavigationState = useRootNavigationState();
+  // const rootNavigationState = useRootNavigationState();
 
-  useEffect(() => {
-    CheckNavLoaded();
-  }, []);
+  // useEffect(() => {
+  //   CheckNavLoaded();
+  // }, []);
 
-  const CheckNavLoaded = () => {
-    if (!rootNavigationState.key) {
-      return null;
-    }
-  };
+  // const CheckNavLoaded = () => {
+  //   if (!rootNavigationState.key) {
+  //     return null;
+  //   }
+  // };
 
   if (!isLoaded) {
     // You can add a loading indicator here
