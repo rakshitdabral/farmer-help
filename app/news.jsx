@@ -53,7 +53,7 @@ export default function News() {
 
   if (loading && page === 1) {
     return (
-      <View style={styles.container}>
+      <View style={styles.loadingStyle}>
         <ActivityIndicator size="large" color="#EBB20E" />
       </View>
     );
@@ -125,4 +125,9 @@ const styles = StyleSheet.create({
     flex: 1,
     gap: 10,
   },
+  loadingStyle : {
+    flex : 1,
+    justifyContent : 'center',
+    alignItems : 'center'
+  }
 });
