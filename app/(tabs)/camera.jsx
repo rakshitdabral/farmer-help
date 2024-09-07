@@ -2,7 +2,7 @@ import { CameraView, useCameraPermissions } from 'expo-camera'
 import * as MediaLibrary from "expo-media-library"
 import { useNavigation } from 'expo-router'
 import React, { useRef, useState } from 'react'
-import { Alert, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Alert, Dimensions, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import Colors from '../../constants/Colors'
 import Button from "./../../components/Camera/Button"
 
@@ -32,12 +32,12 @@ export default function Cam() {
 
   if(!cameraPermission.granted || mediaLibraryPermission.status !=='granted'){
       return(
-        <View  style={styles.container}>
+        <View  style={styles.containerPermission}>
           <Text style={{
             fontFamily : 'outfit',
-            fontSize : 14
+            fontSize : 20
           }}>We need your permission to continue</Text>
-          <TouchableOpacity style={styles.button} 
+          <TouchableOpacity style={styles.buttonPermission} 
           
           onPress={()=>{
             requestCameraPermission()
@@ -213,5 +213,19 @@ const styles = StyleSheet.create({
     width: 30,
     height :30 ,
     borderRadius : 50 
+  },
+  containerPermission : {
+    flex : 1,
+    justifyContent : 'center',
+    alignItems : 'center'
+  },
+  buttonPermission:{
+    backgroundColor : Colors.PRIMARY,
+    padding : 10,
+    margin : 10,
+    borderRadius : 5,
+    justifyContent : 'center',
+    alignItems : 'center',
+    width : Dimensions.get('window').width*0.6
   }
 })

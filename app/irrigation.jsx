@@ -1,11 +1,12 @@
-import React , {useState ,useEffect} from 'react'
-import { Dimensions, Image, Text, TouchableOpacity, View , StyleSheet} from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useNavigation, useRoute } from "@react-navigation/native";
+import axios from 'axios';
+import * as Notifications from 'expo-notifications';
+import { onValue, ref } from 'firebase/database';
+import React, { useEffect, useState } from 'react';
+import { Dimensions, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Colors from "../constants/Colors";
 import { realTimeDatabase } from './../config/FirebaseConfig';
-import { onValue, ref } from 'firebase/database';
-import axios from 'axios';
 
 export default function irrigation() {
   const route = useRoute();
@@ -15,6 +16,15 @@ export default function irrigation() {
   const [humidity, setHumidity] = useState(null);
   const apiUrl = 'https://smart-irrigation-system-ozgf.onrender.com/predict';
   const [prediction, setPrediction] = useState('');
+
+  Notifications.setNotificationHandler({
+    handleNotification: async () => ({
+      shouldShowAlert: true,
+      shouldPlaySound: false,
+      shouldSetBadge: false,
+    }),
+  });
+  
 
 
 
@@ -30,7 +40,25 @@ export default function irrigation() {
         SoilHumidity: cleanValue(humidity),
       });
       setPrediction(response.data)
-      // console.log(prediction);
+      
+      if(response.data.prediction ==='water the plant'){
+          // console.log(response.data.prediction)
+          Notifications.scheduleNotificationAsync({
+            content: {
+              title: 'Alert',
+              body: "Your plant is feeling blue... literally. It needs a drink to brighten its day!",
+            },
+            trigger: null,
+          });
+      }else{
+        Notifications.scheduleNotificationAsync({
+          content: {
+            title: 'Alert',
+            body: "Your plant is on a diet. Please don't ruin its progress with extra water!",
+          },
+          trigger: null,
+        });
+      }
     } catch (error) {
       console.error(error);
     }
@@ -85,7 +113,7 @@ export default function irrigation() {
   return (
     <View style={{
       padding: 20,
-      marginTop: 20,
+      marginTop: 10,
     }}>
       <View
         style={{

@@ -2,6 +2,7 @@ import { ClerkProvider, useAuth } from "@clerk/clerk-expo";
 import { useFonts } from "expo-font";
 import { SplashScreen, Stack, useRouter } from "expo-router";
 import * as SecureStore from 'expo-secure-store';
+
 import React, { useEffect } from "react";
 
 const tokenCache = {
@@ -37,6 +38,7 @@ SplashScreen.preventAutoHideAsync();
 const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
 
 export default function RootLayout() {
+ 
   const [loaded, error]= useFonts({
     "outfit": require("./../assets/fonts/Outfit-Regular.ttf"),
     "outfit-med": require("./../assets/fonts/Outfit-Medium.ttf"),
@@ -66,6 +68,7 @@ export default function RootLayout() {
 
 
 function RootLayoutNav(){
+
   const { isLoaded, isSignedIn } = useAuth();
   const router = useRouter();
 
@@ -77,7 +80,7 @@ function RootLayoutNav(){
 
   return(
     <Stack>
-      <Stack.Screen name="index" />
+      <Stack.Screen name="index" options={{ headerShown: false }} />
       <Stack.Screen name="(tabs)" options={{
         headerShown : false
       }}/>

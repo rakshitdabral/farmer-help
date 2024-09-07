@@ -4,6 +4,8 @@ import * as WebBrowser from 'expo-web-browser';
 import React, { useCallback } from 'react';
 import { Image, Pressable, Text, View } from "react-native";
 import Colors from "../../constants/Colors";
+import { registerIndieID, unregisterIndieDevice } from 'native-notify';
+import axios from 'axios';
 
 export const useWarmUpBrowser = () => {
   React.useEffect(() => {
