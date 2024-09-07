@@ -1,15 +1,67 @@
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useNavigation, useRoute } from "@react-navigation/native";
-import React from "react";
-import { Dimensions, Image, Text, TouchableOpacity, View } from "react-native";
+import axios from "axios";
+import * as FileSystem from 'expo-file-system';
+import React, { useEffect, useState } from "react";
+import { Dimensions, Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import Colors from "../constants/Colors";
 
+
 export default function Disease() {
+  const apiKey = 'AIzaSyBp41CUDq8ptTjLhajTJ1-Vaa8ilbbM2dg';
   const route = useRoute();
   const image = route.params.image;
   const navigation = useNavigation();
+  const [base , setBase] = useState("")
+  const [answer , setAnswer] = useState("")
+  const convertImageToBase64 = async () => {
+    try {
+      const base64Image = await FileSystem.readAsStringAsync(image, {
+        encoding: 'base64',
+      });
+      setBase(base64Image)
+      
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const generateContent = async () => {
+    // console.log('Base64 image data:', base);
+    try {
+      const response = await axios.post(
+        'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyBp41CUDq8ptTjLhajTJ1-Vaa8ilbbM2dg',
+        {
+          contents: [{
+            parts: [{
+              text: 'Does this plant have any disese ? if yes Tell me the name of the disease and its treatment',
+            }, {
+              inline_data: {
+                mime_type: 'image/jpeg',
+                data: base,
+              },
+            }],
+          }],
+          
+        },
+      );
   
+      const responseData = response.data.candidates[0].content.parts[0].text;
+      setAnswer(responseData)
+      console.log(responseData);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  
+  useEffect(() => {
+    convertImageToBase64();
+  }, [image]);
+
+  
+
   return (
+    <ScrollView showsVerticalScrollIndicator={false}>
     <View
       style={{
         padding: 20,
@@ -60,7 +112,7 @@ export default function Disease() {
           borderRadius: 9,
           marginTop: 14,
         }}
-        
+        onPress={generateContent}
         >
           <Text style={{
             color: Colors.WHITE,
@@ -69,7 +121,28 @@ export default function Disease() {
           }}>Predict</Text>
         </TouchableOpacity>
       </View>
-     
-    </View>
+      {answer && (
+        <View style = {{
+          display : 'flex',
+          flexDirection : 'column',
+          backgroundColor : Colors.WHITE,
+          borderRadius : 9,
+          marginTop : 14,
+          justifyContent : 'center',
+          alignItems : 'center',
+          padding : 8,
+          flexGrow : 1
+        }}>
+        <Text style={{
+              fontFamily : 'outfit-mid',
+              fontSize : 17
+            }}>
+                {answer}
+            </Text>
+        </View>
+      )}
+          
+    </View> 
+    </ScrollView>
   );
 }
