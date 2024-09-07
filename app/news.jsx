@@ -62,6 +62,7 @@ export default function News() {
   return (
     <View style={styles.container}>
       <View style={{
+        marginTop : 20,
         marginBottom : 20
       }}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -90,7 +91,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#FFF",
     padding: 20,
-    marginTop: 15,
+    marginTop: 20,
   },
   title: {
     fontSize: 24,
@@ -108,6 +109,8 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 200,
     borderRadius: 10,
+    borderWidth : 1,
+    borderColor : Colors.GRAY
   },
   heading: {
     fontSize: 18,

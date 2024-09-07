@@ -4,8 +4,6 @@ import React from "react";
 import { Dimensions, Image, Text, TouchableOpacity, View } from "react-native";
 import Colors from "../constants/Colors";
 
-
-
 export default function Disease() {
   const route = useRoute();
   const image = route.params.image;
