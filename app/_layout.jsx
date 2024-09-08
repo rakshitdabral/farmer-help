@@ -1,7 +1,8 @@
-import { ClerkProvider, useAuth } from "@clerk/clerk-expo";
+import { ClerkLoaded, ClerkProvider, useAuth } from "@clerk/clerk-expo";
 import { useFonts } from "expo-font";
 import { SplashScreen, Stack, useRouter } from "expo-router";
 import * as SecureStore from 'expo-secure-store';
+
 
 import React, { useEffect } from "react";
 
@@ -9,11 +10,11 @@ const tokenCache = {
   async getToken(key) {
     try {
       const item =  SecureStore.getItemAsync(key);
-      // if (item) {
-      //   console.log(`${key} was used 🔐 \n`)
-      // } else {
-      //   console.log('No values stored under key: ' + key)
-      // }
+      if (item) {
+        console.log(`${key} was used 🔐 \n`)
+      } else {
+        console.log('No values stored under key: ' + key)
+      }
       return item
     } catch (err) {
       await SecureStore.deleteItemAsync(key)
@@ -61,7 +62,9 @@ export default function RootLayout() {
 
   return (
     <ClerkProvider publishableKey={publishableKey} tokenCache={tokenCache}>
+       <ClerkLoaded>
       <RootLayoutNav />
+      </ClerkLoaded>
   </ClerkProvider>
   );
 }
@@ -80,11 +83,11 @@ function RootLayoutNav(){
 
   return(
     <Stack>
-      <Stack.Screen name="index" options={{ headerShown: false }} />
-      <Stack.Screen name="(tabs)" options={{
+       <Stack.Screen name="(tabs)" options={{
         headerShown : false
       }}/>
-      <Stack.Screen name="login/index" options={{ headerShown: false }} />
+       <Stack.Screen name="login/index" options={{ headerShown: false }} />
+      <Stack.Screen name="index" options={{ headerShown: false }} />
       <Stack.Screen name="disease" options={{ headerShown: false }} />
       <Stack.Screen name="irrigation" options={{ headerShown: false }} />
       <Stack.Screen name="news" options={{ headerShown: false }} />

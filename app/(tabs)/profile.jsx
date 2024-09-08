@@ -25,7 +25,7 @@ export default function Profile() {
     if(menu.name=='Logout'){
      
       signOut()
-      router.push(menu.path)
+      // router.push(menu.path)
       return
     }
   
@@ -43,7 +43,7 @@ export default function Profile() {
       id:2,
       name : 'Logout',
       icon : 'exit',
-      path : '/login'
+      path : '#'
     }
   ]
   return (

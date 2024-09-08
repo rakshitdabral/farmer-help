@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { ScrollView, View } from 'react-native'
 import Category from '../../components/Home/Category'
 import Header from '../../components/Home/Header'
 import Realtimedata from '../../components/Home/Realtimedata'
 import Slider from '../../components/Home/Slider'
+import { useUser } from '@clerk/clerk-expo'
 
 export default function Home() {
+
   
+
   return (
     <ScrollView showsVerticalScrollIndicator={false} >
     <View style={{

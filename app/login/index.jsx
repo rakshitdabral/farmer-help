@@ -23,15 +23,16 @@ WebBrowser.maybeCompleteAuthSession()
 
 export default function LoginScreen() {
   useWarmUpBrowser()
+
   const { startOAuthFlow } = useOAuth({ strategy: 'oauth_google' })
   
-  const onPress = useCallback(async () => {
+  const onPress = React.useCallback(async () => {
     try {
       const { createdSessionId, signIn, signUp, setActive } = await startOAuthFlow({
         redirectUrl: Linking.createURL('/(tabs)/home', { scheme: 'myapp' }),
       })
       if(createdSessionId){
-          
+        setActive({ session: createdSessionId })
       }else{
         
       }
