@@ -28,6 +28,9 @@ export default function Profile() {
       // router.push(menu.path)
       return
     }
+    if(menu.name=='Connect'){
+      router.push(menu.path)
+    }
   
    
   }
@@ -37,7 +40,7 @@ export default function Profile() {
       id:1,
       name : 'Connect',
       icon : 'build',
-      path : '#'
+      path : 'connect'
     },
     {
       id:2,
