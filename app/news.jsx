@@ -91,13 +91,13 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#FFF",
     padding: 20,
-    marginTop: 20,
+    marginTop: 0,
   },
   title: {
     fontSize: 24,
     fontFamily: "outfit-mid",
     color: "#EBB20E",
-    marginBottom: 10,
+    marginBottom: 15,
   },
   newsItem: {
     marginBottom: 5,

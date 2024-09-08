@@ -3,7 +3,7 @@ import { CameraView, useCameraPermissions } from 'expo-camera';
 import * as MediaLibrary from 'expo-media-library';
 import { useNavigation } from 'expo-router';
 import React, { useEffect, useRef, useState } from 'react';
-import { Alert, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Button from './../../components/Camera/Button';
 export default function App() {
     const navigation = useNavigation();
@@ -90,7 +90,7 @@ export default function App() {
           try {
               const asset = await MediaLibrary.createAssetAsync(image);
               const assetInfo = await MediaLibrary.getAssetInfoAsync(asset.id);
-              Alert.alert('Photo saved!', image);
+            //   Alert.alert('Photo saved!');
               setImage(null);
               getLastSavedImage();
               navigation.push('disease', { image: image });
@@ -218,10 +218,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    marginTop: 30,
+    marginTop: 0,
   },
   topControlsContainer: {
-    height: 100,
+    height: 70,
     backgroundColor:'black',
     flexDirection: 'row',
     justifyContent:'space-around',
