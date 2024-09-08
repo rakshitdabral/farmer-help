@@ -5,10 +5,8 @@ import * as Notifications from 'expo-notifications';
 import { onValue, ref } from 'firebase/database';
 import React, { useEffect, useState } from 'react';
 import { Dimensions, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import BackgroundTimer from 'react-native-background-timer';
 import Colors from "../constants/Colors";
 import { realTimeDatabase } from './../config/FirebaseConfig';
-
 
 export default function irrigation() {
   const route = useRoute();
@@ -23,8 +21,8 @@ export default function irrigation() {
   Notifications.setNotificationHandler({
     handleNotification: async () => ({
       shouldShowAlert: true,
-      shouldPlaySound: true,
-      shouldSetBadge: true,
+      shouldPlaySound: false,
+      shouldSetBadge: false,
     }),
   });
   
@@ -109,14 +107,10 @@ export default function irrigation() {
     }, (error) => {
       console.error('Error fetching data:', error);
     });
-    
+
     return () => unsubscribe();
   }, []);
 
-  
-  
-  
-  
   return (
     <View style={{
       padding: 20,

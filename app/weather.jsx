@@ -11,6 +11,7 @@ export default function Weather() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigation = useNavigation();
+  
 
   useEffect(() => {
     const apiKey = "27b38ed5bc6c40a4e6de0c7adeb3038f";

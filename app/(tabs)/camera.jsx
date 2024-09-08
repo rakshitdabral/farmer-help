@@ -18,7 +18,7 @@ export default function App() {
     });
     const [image, setImage] = useState(null);
     const [previousImage, setPreviousImage] = useState(null);
-
+    
     const cameraRef = useRef(null);
 
     //to load the last saved image when permissions change
@@ -218,7 +218,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    marginTop: 0,
+    marginTop: 30,
   },
   topControlsContainer: {
     height: 70,
