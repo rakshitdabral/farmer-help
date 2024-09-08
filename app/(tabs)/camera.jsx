@@ -4,8 +4,8 @@ import * as MediaLibrary from 'expo-media-library';
 import { useNavigation } from 'expo-router';
 import React, { useEffect, useRef, useState } from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import Button from './../../components/Camera/Button';
 import Colors from '../../constants/Colors';
+import Button from './../../components/Camera/Button';
 export default function App() {
     const navigation = useNavigation();
     const [cameraPermission, requestCameraPermission] = useCameraPermissions();

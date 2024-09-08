@@ -92,6 +92,7 @@ function RootLayoutNav(){
       <Stack.Screen name="irrigation" options={{ headerShown: false }} />
       <Stack.Screen name="news" options={{ headerShown: false }} />
       <Stack.Screen name="weather" options={{ headerShown: false }} />
+      <Stack.Screen name="fertilizer" options={{ headerShown: false }} />
     </Stack>
   )
 }

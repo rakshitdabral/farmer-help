@@ -2,12 +2,11 @@ import { useNavigation } from "expo-router";
 import { collection, getDocs } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import {
-  FlatList,
   Image,
   StyleSheet,
   Text,
   TouchableOpacity,
-  View,
+  View
 } from "react-native";
 import { db } from "../../config/FirebaseConfig";
 import Colors from "./../../constants/Colors";
@@ -115,6 +114,30 @@ export default function Category() {
           Irrigation
         </Text>
       </TouchableOpacity>
+
+      <TouchableOpacity
+        onPress={() => navigation.push("fertilizer")}
+        style={{
+          flex: 1,
+          marginTop: 6,
+        }}
+      >
+        <View style={styles.container}>
+          <Image
+            source={require("./../../assets/images/fertilizer.png")}
+            style={{ width: 40, height: 40 }}
+          />
+        </View>
+        <Text
+          style={{
+            textAlign: "center",
+            fontFamily: "outfit",
+          }}
+        >
+          Fertilizer
+        </Text>
+      </TouchableOpacity>
+
     </View>
     </View>
   );
