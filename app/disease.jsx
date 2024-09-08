@@ -48,7 +48,7 @@ export default function Disease() {
   
       const responseData = response.data.candidates[0].content.parts[0].text;
       setAnswer(responseData)
-      console.log(responseData);
+      // console.log(responseData);
     } catch (error) {
       console.error(error);
     }
