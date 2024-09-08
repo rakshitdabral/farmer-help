@@ -14,13 +14,13 @@ import {
 import Colors from "../constants/Colors";
 
 const apiKey = "03ebac67c48149b6b54d80f9d7c8101f";
-const pageSize = 5;
+const pageSize = 3; // Set to 3 to ensure at least 3 items per page
 
 export default function News() {
   const [newsData, setNewsData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
-  const [hasMore, setHasMore] = useState(true);
+  const [totalResults, setTotalResults] = useState(0);
 
   const route = useRoute();
   const navigation = useNavigation();
@@ -36,8 +36,8 @@ export default function News() {
         `https://newsapi.org/v2/everything?q=farming OR agriculture OR crops&pageSize=${pageSize}&page=${page}&apiKey=${apiKey}`
       );
       const data = await response.json();
-      setHasMore(data.articles.length > 0);
-      setNewsData((prevData) => [...prevData, ...data.articles]);
+      setTotalResults(data.totalResults);
+      setNewsData(data.articles);
     } catch (error) {
       console.error("Error fetching news:", error);
     } finally {
@@ -45,13 +45,19 @@ export default function News() {
     }
   };
 
-  const loadMore = () => {
-    if (hasMore) {
-      setPage(page + 1);
+  const handlePreviousPage = () => {
+    if (page > 1) {
+      setPage((prevPage) => prevPage - 1);
     }
   };
 
-  if (loading && page === 1) {
+  const handleNextPage = () => {
+    if (page < Math.ceil(totalResults / pageSize)) {
+      setPage((prevPage) => prevPage + 1);
+    }
+  };
+
+  if (loading) {
     return (
       <View style={styles.loadingStyle}>
         <ActivityIndicator size="large" color="#EBB20E" />
@@ -61,10 +67,7 @@ export default function News() {
 
   return (
     <View style={styles.container}>
-      <View style={{
-        marginTop : 20,
-        marginBottom : 20
-      }}>
+      <View style={{ marginTop: 20, marginBottom: 20 }}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Ionicons name="arrow-back" size={34} color={Colors.PRIMARY} />
         </TouchableOpacity>
@@ -79,9 +82,22 @@ export default function News() {
           </View>
         ))}
       </ScrollView>
-      {hasMore && (
-        <Button title="Load More" onPress={loadMore} color="#EBB20E" />
-      )}
+
+      <View style={styles.paginationContainer}>
+        <Button
+          title="Previous"
+          onPress={handlePreviousPage}
+          disabled={page === 1}
+          color="#EBB20E"
+        />
+        <Text style={styles.pageNumber}>Page {page}</Text>
+        <Button
+          title="Next"
+          onPress={handleNextPage}
+          disabled={page >= Math.ceil(totalResults / pageSize)}
+          color="#EBB20E"
+        />
+      </View>
     </View>
   );
 }
@@ -100,7 +116,7 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
   newsItem: {
-    marginBottom: 5,
+    marginBottom: 15, // Increased margin to separate items
     borderBottomWidth: 1,
     borderBottomColor: "#8F8e8d",
     paddingBottom: 10,
@@ -109,8 +125,8 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 200,
     borderRadius: 10,
-    borderWidth : 1,
-    borderColor : Colors.GRAY
+    borderWidth: 1,
+    borderColor: Colors.GRAY,
   },
   heading: {
     fontSize: 18,
@@ -128,9 +144,19 @@ const styles = StyleSheet.create({
     flex: 1,
     gap: 10,
   },
-  loadingStyle : {
-    flex : 1,
-    justifyContent : 'center',
-    alignItems : 'center'
-  }
+  loadingStyle: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  paginationContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginVertical: 15,
+  },
+  pageNumber: {
+    fontSize: 16,
+    color: "#EBB20E",
+  },
 });
