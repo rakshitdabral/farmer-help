@@ -5,6 +5,7 @@ import { useNavigation } from 'expo-router';
 import React, { useEffect, useRef, useState } from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Button from './../../components/Camera/Button';
+import Colors from '../../constants/Colors';
 export default function App() {
     const navigation = useNavigation();
     const [cameraPermission, requestCameraPermission] = useCameraPermissions();
@@ -36,8 +37,11 @@ export default function App() {
     if (!cameraPermission.granted || mediaLibraryPermissionResponse.status !== 'granted') {
         // Permissions are not granted yet.
         return (
-          <View style={styles.container}>
-              <Text>We need camera and gallery permissions to continue.</Text>
+          <View style={styles.containerPermission}>
+              <Text style={{
+                fontFamily : 'outfit-mid',
+                fontSize : 16
+              }}>We need camera and gallery permissions to continue.</Text>
               <TouchableOpacity style={styles.button} onPress={() => {
                   requestCameraPermission();
                   requestMediaLibraryPermission();
@@ -228,7 +232,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   button: {
-    backgroundColor: 'blue',
+    backgroundColor: Colors.PRIMARY,
     padding: 10,
     margin: 10,
     borderRadius: 5,
@@ -236,6 +240,7 @@ const styles = StyleSheet.create({
 buttonText: {
     color: 'white',
     fontSize: 16,
+    fontFamily : 'outfit-bold'
 },
 camera: {
   flex:1,
@@ -263,5 +268,10 @@ previousImage: {
   width:60,
   height:60,
   borderRadius: 50
+},
+containerPermission : {
+    flex : 1,
+    justifyContent : 'center',
+    alignItems : 'center',
 }
 });
