@@ -1,7 +1,7 @@
 import { useUser } from "@clerk/clerk-expo";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { StyleSheet } from "react-native";
+import { ImageBackground, StyleSheet } from "react-native";
 import { Bubble, GiftedChat } from "react-native-gifted-chat";
 import Colors from "./../../constants/Colors";
 
@@ -9,6 +9,7 @@ export default function Chat() {
   const {user} = useUser()
   const [messages , setMessages] = useState([])
   const [loading ,setLoading] = useState(false)
+  const apiKey = process.env.EXPO_PUBLIC_GEMINI_KEY ;
   const handelSend = async(newMessages = [])=>{
     try{
         const userMessage = newMessages[0]
@@ -47,7 +48,7 @@ export default function Chat() {
         }
         setLoading(true)
         const response = await axios({
-          url: `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyBp41CUDq8ptTjLhajTJ1-Vaa8ilbbM2dg`,
+          url: `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${apiKey}`,
           method: "post",
           data: {
             contents: [{ parts: [{ text: messagesText }] }],
@@ -79,7 +80,7 @@ export default function Chat() {
     setMessages([
       {
         _id: 1,
-        text: "Hello There",
+        text: `Welcome ${user?.fullName} , Got a farming question? I'm your go-to bot.`,
         createdAt: new Date(),
         user: {
           _id: 2,
@@ -87,8 +88,10 @@ export default function Chat() {
           avatar: "https://static.vecteezy.com/system/resources/previews/010/054/157/original/chat-bot-robot-avatar-in-circle-round-shape-isolated-on-white-background-stock-illustration-ai-technology-futuristic-helper-communication-conversation-concept-in-flat-style-vector.jpg",
         },
       },
-    ]);
-  }, []);
+    ],);
+  },
+  
+  []);
 
  
 
@@ -113,7 +116,15 @@ export default function Chat() {
     );
   };
 
+
+  
+
   return (
+    <ImageBackground  source={require("./../../assets/images/cats.png")} style={{
+      flex: 1,
+    resizeMode: 'cover',
+    justifyContent: 'center',
+    }}>
     <GiftedChat
       messages={messages}
       onSend={(newMessages) => handelSend(newMessages)}
@@ -126,7 +137,9 @@ export default function Chat() {
       scrollToBottom
       inverted={true}
       isTyping={loading}
+      
     />
+    </ImageBackground>
   );
 }
 
