@@ -132,7 +132,7 @@ export default function Realtimedata() {
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => handlepress('pressure')} style={{ width: "100%" }}>
+        {/* <TouchableOpacity onPress={() => handlepress('pressure')} style={{ width: "100%" }}>
           <View style={styles.container}>
             <Animated.Image
               source={require("./../../assets/images/pressure-icon.png")}
@@ -144,9 +144,9 @@ export default function Realtimedata() {
               </Text>
             )}
           </View>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
 
-        <TouchableOpacity onPress={() => handlepress('altitude')} style={{ width: "100%" }}>
+        {/* <TouchableOpacity onPress={() => handlepress('altitude')} style={{ width: "100%" }}>
           <View style={styles.container}>
             <Animated.Image
               source={require("./../../assets/images/altitude-icon.png")}
@@ -158,7 +158,7 @@ export default function Realtimedata() {
               </Text>
             )}
           </View>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
 
         <TouchableOpacity onPress={() => handlepress('humidity')} style={{ width: "100%" }}>
           <View style={styles.container}>

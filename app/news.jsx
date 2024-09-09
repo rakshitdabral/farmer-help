@@ -105,7 +105,7 @@ export default function News() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#FFF",
+    
     padding: 20,
     marginTop: 0,
   },
@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
     color: "#8F8e8d",
   },
   newsCard: {
-    backgroundColor: Colors.WHITE,
+    
     flex: 1,
     gap: 10,
   },

@@ -76,8 +76,8 @@ export default function Weather() {
     <View style={{
       height : '100%',
       padding: 20,
-      marginTop: 10,
-      backgroundColor: Colors.WHITE
+      marginTop: 0,
+      
     }}>
       <View
         style={{
@@ -144,7 +144,7 @@ export default function Weather() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.WHITE,
+    
     padding: 20,
     justifyContent: "center",
     alignItems: "center",
