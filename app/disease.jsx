@@ -4,6 +4,7 @@ import axios from "axios";
 import * as FileSystem from 'expo-file-system';
 import React, { useEffect, useState } from "react";
 import { ActivityIndicator, Dimensions, Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
+import Markdown from 'react-native-markdown-display';
 import Colors from "../constants/Colors";
 
 export default function Disease() {
@@ -140,12 +141,28 @@ export default function Disease() {
               padding: 8,
               flexGrow: 1
             }}>
-              <Text style={{
+              {/* <Text style={{
                 fontFamily: 'outfit-mid',
                 fontSize: 17
               }}>
-                {answer}
-              </Text>
+                
+              </Text> */}
+              <Markdown 
+              
+              style={{
+              display: 'flex',
+              flexDirection: 'column',
+              backgroundColor: Colors.WHITE,
+              borderRadius: 9,
+              marginTop: 14,
+              justifyContent: 'center',
+              alignItems: 'center',
+              padding: 8,
+              flexGrow: 1,
+              
+            }}>
+{answer}
+              </Markdown>
             </View>
           )
         )}

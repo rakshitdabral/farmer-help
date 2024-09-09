@@ -225,7 +225,8 @@ const styles = StyleSheet.create({
     marginTop: 0,
   },
   topControlsContainer: {
-    height: 70,
+    height: 80,
+    marginTop : 30,
     backgroundColor:'black',
     flexDirection: 'row',
     justifyContent:'space-around',
