@@ -260,13 +260,13 @@ export default function fertilizer() {
       <SelectList
         boxStyles={
          {
-          backgroundColor : Colors.TERTIARY,
+          backgroundColor : Colors.SECONDARY,
           borderColor : Colors.PRIMARY,
           color : Colors.GRAY
          }
         }
         dropdownStyles={{
-          backgroundColor : Colors.TERTIARY,
+          backgroundColor : Colors.SECONDARY,
           borderColor : Colors.PRIMARY
         }}
         dropdownTextStyles={{
@@ -378,7 +378,7 @@ export default function fertilizer() {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: Colors.TERTIARY,
+    backgroundColor: Colors.SECONDARY,
     width: "100%",
     borderRadius: 9,
     display: "flex",

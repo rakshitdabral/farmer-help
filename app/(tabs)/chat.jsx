@@ -16,7 +16,7 @@ export default function Chat() {
         setMessages(previousMessages=> GiftedChat.append(previousMessages,userMessage))
         const messagesText = userMessage.text.toLowerCase()
 
-        const keywords = ["hello",
+        const keywords = ["hello","hello how are you" ,
           "hello farmer", "good morning farmer", "good afternoon farmer", "good evening farmer", "welcome to the farm", "happy farming", "greetings from the field", "howdy",
           "farmer", "agriculture", "agribusiness", "farming", "agriculture business", "farmer's market", "farm life", "rural life", "agriculturalist",
           "farm tools", "agricultural equipment", "farming equipment", "farm machinery", "agricultural implements", "tractor", "plow", "harvester", "combine harvester", "sower", "sprinkler", "irrigation system", "fertilizer spreader", "weed whacker", "chainsaw",

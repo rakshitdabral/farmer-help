@@ -10,7 +10,6 @@ import { Dimensions, Image, StyleSheet, Text, TouchableOpacity, View } from "rea
 import Colors from "../constants/Colors";
 import { realTimeDatabase } from './../config/FirebaseConfig';
 
-
 const BACKGROUND_TASK_NAME = 'background-prediction-fetch';
 
 
@@ -107,6 +106,14 @@ export default function Irrigation() {
     return value.replace("*C", "").replace("%", "").trim();
   };
 
+  // useEffect(()=>{
+  //   async function requestNotificationPermission() {
+  //     const permission = await Permissions.askAsync(Permissions.NOTIFICATIONS);
+  //     if (permission.status !== 'granted') {
+  //       alert('Notification permission denied');
+  //     }
+  //   }
+  // },[])
   const postDataToApi = async () => {
     try {
       const response = await axios.post(apiUrl, {
@@ -222,7 +229,7 @@ export default function Irrigation() {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: Colors.TERTIARY,
+    backgroundColor: Colors.SECONDARY,
     width: "100%",
     borderRadius: 9,
     alignItems: "center",
@@ -232,6 +239,8 @@ const styles = StyleSheet.create({
     marginTop: 16
   },
   text: {
+    padding : 4,
+    marginTop : 6,
     fontSize: 20,
     color: Colors.GRAY,
   },

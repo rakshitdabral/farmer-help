@@ -1,6 +1,6 @@
 import { onValue, ref } from 'firebase/database';
-import React, { useEffect, useState, useRef } from 'react';
-import { Animated, Image, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import React, { useEffect, useRef, useState } from 'react';
+import { Animated, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { realTimeDatabase } from '../../config/FirebaseConfig';
 import Colors from "../../constants/Colors";
 
@@ -25,13 +25,13 @@ export default function Realtimedata() {
     Animated.loop(
       Animated.sequence([
         Animated.timing(animatedValue, {
-          toValue: 1.5, 
-          duration: 1000, 
+          toValue: 1.25, 
+          duration: 2000, 
           useNativeDriver: true,
         }),
         Animated.timing(animatedValue, {
           toValue: 1, 
-          duration: 1000, 
+          duration: 2000, 
           useNativeDriver: true,
         }),
       ])
@@ -180,7 +180,7 @@ export default function Realtimedata() {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: Colors.TERTIARY,
+    backgroundColor: Colors.SECONDARY,
     width: "100%",
     borderRadius: 9,
     display: "flex",
@@ -194,6 +194,8 @@ const styles = StyleSheet.create({
   text: {
     fontFamily: "outfit-mid",
     fontSize: 20,
+    padding : 2,
+    marginTop : 5,
     color: Colors.GRAY,
   },
   icon: {

@@ -139,18 +139,15 @@ export default function Disease() {
               justifyContent: 'center',
               alignItems: 'center',
               padding: 8,
-              flexGrow: 1
+              flexGrow: 1,
+              
             }}>
-              {/* <Text style={{
-                fontFamily: 'outfit-mid',
-                fontSize: 17
-              }}>
-                
-              </Text> */}
+              <ScrollView>
               <Markdown 
               
               style={{
               display: 'flex',
+              
               flexDirection: 'column',
               backgroundColor: Colors.WHITE,
               borderRadius: 9,
@@ -159,10 +156,12 @@ export default function Disease() {
               alignItems: 'center',
               padding: 8,
               flexGrow: 1,
-              
+              flex : 1
             }}>
 {answer}
               </Markdown>
+              </ScrollView>
+              
             </View>
           )
         )}
