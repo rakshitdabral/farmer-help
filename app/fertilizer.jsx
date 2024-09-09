@@ -284,6 +284,7 @@ export default function fertilizer() {
         maxHeight ={150}
         fontFamily={'outfit-mid'}
         setSelected={(item) => setSelected(item)}
+        defaultOption={{key : 'rice' , value : 'rice'}}
         save="value"
       />
       
@@ -370,6 +371,9 @@ export default function fertilizer() {
             )
           )
         }
+      </View>
+      <View>
+        
       </View>
     </View>
     </ScrollView>
