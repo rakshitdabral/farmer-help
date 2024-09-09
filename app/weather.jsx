@@ -76,7 +76,7 @@ export default function Weather() {
     <View style={{
       height : '100%',
       padding: 20,
-      marginTop: 0,
+      marginTop: 10,
       backgroundColor: Colors.WHITE
     }}>
       <View

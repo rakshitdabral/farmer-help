@@ -5,11 +5,15 @@ import { ImageBackground, StyleSheet } from "react-native";
 import { Bubble, GiftedChat } from "react-native-gifted-chat";
 import Colors from "./../../constants/Colors";
 
+
+
 export default function Chat() {
   const {user} = useUser()
   const [messages , setMessages] = useState([])
   const [loading ,setLoading] = useState(false)
   const apiKey = process.env.EXPO_PUBLIC_GEMINI_KEY ;
+
+  
   const handelSend = async(newMessages = [])=>{
     try{
         const userMessage = newMessages[0]

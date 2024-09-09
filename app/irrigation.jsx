@@ -181,7 +181,7 @@ export default function Irrigation() {
   }, []);
 
   return (
-    <View style={{ padding: 20, marginTop: 10 }}>
+    <View style={{ padding: 20, marginTop: 20 }}>
       <View style={{ flexDirection: "row", justifyContent: "space-between", height: 50 }}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Ionicons name="arrow-back" size={34} color={Colors.PRIMARY} />
