@@ -9,9 +9,11 @@ This comprehensive app offers farmers a range of tools to optimize their farming
 
 ## Screenshots
 
-![App Screenshot]([https://i.ibb.co/4dYD48X/Whats-App-Image-2024-09-09-at-9-47-38-PM-1.jpg](https://github.com/user-attachments/assets/db934cfd-74e9-46b4-867e-040314d582dc))
-![App Screenshot]([https://i.ibb.co/RpnZZg9/Whats-App-Image-2024-09-09-at-9-47-37-PM.jpg](https://github.com/user-attachments/assets/0cfe9a2a-8f04-4748-813c-f5b654f0935c))
-![App Screenshot]([https://i.ibb.co/DGghKbY/Whats-App-Image-2024-09-09-at-9-47-37-PM-2.jpg](https://github.com/user-attachments/assets/14754862-4f13-4d28-a597-026eaa8ee9dd))
+![App Screenshot](https://github.com/user-attachments/assets/db934cfd-74e9-46b4-867e-040314d582dc)
+
+![App Screenshot](https://github.com/user-attachments/assets/0cfe9a2a-8f04-4748-813c-f5b654f0935c)
+
+![App Screenshot](https://github.com/user-attachments/assets/14754862-4f13-4d28-a597-026eaa8ee9dd)
 
 # Project Goal:
 
