@@ -13,7 +13,7 @@ import {
 } from "react-native";
 import Colors from "../constants/Colors";
 
-const apiKey = "03ebac67c48149b6b54d80f9d7c8101f";
+const apiKey = process.env.EXPO_PUBLIC_NEWS_KEY;
 const pageSize = 3; // Set to 3 to ensure at least 3 items per page
 
 export default function News() {
@@ -153,7 +153,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginVertical: 15,
+    marginVertical: 35,
+    marginTop : 50
   },
   pageNumber: {
     fontSize: 16,

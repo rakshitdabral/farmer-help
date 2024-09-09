@@ -14,6 +14,7 @@ import { realTimeDatabase } from './../config/FirebaseConfig';
 const BACKGROUND_TASK_NAME = 'background-prediction-fetch';
 
 
+
 TaskManager.defineTask(BACKGROUND_TASK_NAME, async () => {
   try {
    

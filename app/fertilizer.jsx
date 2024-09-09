@@ -84,7 +84,7 @@ export default function fertilizer() {
   };
 
   useEffect(() => {
-    const apiKey = "27b38ed5bc6c40a4e6de0c7adeb3038f";
+    const apiKey = process.env.EXPO_PUBLIC_WEATHER_KEY;
 
     const fetchWeatherData = async (latitude, longitude) => {
       const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`;

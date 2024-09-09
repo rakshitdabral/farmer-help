@@ -3,11 +3,11 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import axios from "axios";
 import * as FileSystem from 'expo-file-system';
 import React, { useEffect, useState } from "react";
-import { Dimensions, Image, ScrollView, Text, TouchableOpacity, View, ActivityIndicator } from "react-native";
+import { ActivityIndicator, Dimensions, Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import Colors from "../constants/Colors";
 
 export default function Disease() {
-  const apiKey = 'AIzaSyBp41CUDq8ptTjLhajTJ1-Vaa8ilbbM2dg';
+  const apiKey = process.env.EXPO_PUBLIC_GEMINI_KEY ;
   const route = useRoute();
   const image = route.params.image;
   const navigation = useNavigation();
@@ -30,7 +30,7 @@ export default function Disease() {
     setLoading(true);
     try {
       const response = await axios.post(
-        'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyBp41CUDq8ptTjLhajTJ1-Vaa8ilbbM2dg',
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
         {
           contents: [{
             parts: [{
