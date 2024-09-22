@@ -21,6 +21,11 @@ AgriAssist is a mobile application designed to provide farmers with essential to
 
 # Key Features:
 
+## Fertilizer Prediction:
+
+Employs machine learning algorithms to predict optimal fertilizer requirements based on soil analysis, crop type, and weather conditions.
+Helps farmers optimize fertilizer usage and reduce costs.
+
 ## Plant Watering Alerts:
 
 Utilizes geospatial data and weather information to determine optimal watering times.
@@ -50,10 +55,6 @@ Provides farmers with real-time insights into their crops' health and conditions
 Curates relevant news articles, market trends, and government policies related to agriculture.
 Keeps farmers informed about the latest developments in the industry.
 
-## Fertilizer Prediction:
-
-Employs machine learning algorithms to predict optimal fertilizer requirements based on soil analysis, crop type, and weather conditions.
-Helps farmers optimize fertilizer usage and reduce costs.
 
 ## Benefits for Farmers:
 
